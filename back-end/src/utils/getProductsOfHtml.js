@@ -1,6 +1,7 @@
 const cheerio = require("cheerio");
 const { htmlSearch } = require("../config");
 
+// this function creates a closure that serves to avoid repeating the cheerio search expression.
 function createExtractTextFunction($, element) {
   return function (cssQuery, attr = "") {
     if (!attr) {
@@ -11,12 +12,14 @@ function createExtractTextFunction($, element) {
   };
 }
 
+//applies logic to obey a certain application format.
 function parseProduct(product) {
   const { reviews } = product;
   product.reviews = Number.parseInt(reviews);
   return product;
 }
 
+// convert a cheerio element to a javascript object
 function elementToProduct($, element) {
   const getText = createExtractTextFunction($, element);
 
@@ -31,6 +34,7 @@ function elementToProduct($, element) {
   return parsedProduct;
 }
 
+// takes all html elements on the page that represent products and converts them to an object
 function getProductsOfHtml(content) {
   const products = [];
 
