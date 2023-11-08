@@ -14,8 +14,9 @@ function createExtractTextFunction($, element) {
 
 //applies logic to obey a certain application format.
 function parseProduct(product) {
-  const { reviews } = product;
+  const { reviews, rating } = product;
   product.reviews = Number.parseInt(reviews) || 0;
+  product.rating = Number.parseFloat(rating.split(" ")[0]) || 0;
   return product;
 }
 
