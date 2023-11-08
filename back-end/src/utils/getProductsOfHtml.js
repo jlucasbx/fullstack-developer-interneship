@@ -15,7 +15,7 @@ function createExtractTextFunction($, element) {
 //applies logic to obey a certain application format.
 function parseProduct(product) {
   const { reviews } = product;
-  product.reviews = Number.parseInt(reviews);
+  product.reviews = Number.parseInt(reviews) || 0;
   return product;
 }
 
