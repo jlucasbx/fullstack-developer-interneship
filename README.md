@@ -16,7 +16,7 @@ Make sure you have the following prerequisites installed on your development mac
 1. Clone the repository to your local machine:
 
    ```shell 
-   git clone ttps://github.com/jlucasbx/fullstack-developer-interneship
+   git clone https://github.com/jlucasbx/fullstack-developer-interneship
 2. Run the docker command:
     ```docker
     docker-compose up
