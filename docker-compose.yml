@@ -9,7 +9,6 @@ services:
       - "5173:5173"
     volumes:
       - ./front-end:/app
-    command: ["npm","i","&&","npm","run","dev"]
 
   back-end:
     build:
@@ -21,4 +20,3 @@ services:
       - ./back-end:/app
     environment:
       - PORT=3000
-    command: ["npm","run","dev"]
