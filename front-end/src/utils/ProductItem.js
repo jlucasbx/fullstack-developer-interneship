@@ -1,5 +1,6 @@
 import Rating from "./Rating";
 
+// This function returns a reusable html element like in React
 export default function ProductItem({ image, title, rating, reviews }) {
   const li = document.createElement("li");
 
