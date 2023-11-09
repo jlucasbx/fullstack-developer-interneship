@@ -1,8 +1,17 @@
 const express = require("express");
 const app = express();
-const getProductsOfHtml = require("./utils/getProductsOfHtml");
-const getHtmlContentByQuery = require("./utils/getHtmlContentByQuery");
+const getProductsOfHtml = require("./src/utils/getProductsOfHtml");
+const getHtmlContentByQuery = require("./src/utils/getHtmlContentByQuery");
+const cors = require("cors");
+
+
 const port = process.env.PORT;
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 204 
+}))
 
 app.get("/api/scrape", async (req, res) => {
   const { keyword } = req.query;
