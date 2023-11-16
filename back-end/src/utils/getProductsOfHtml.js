@@ -1,5 +1,5 @@
-const cheerio = require("cheerio");
-const { htmlSearch } = require("../config");
+import * as cheerio from 'cheerio';
+import { htmlSearch } from "../config.js";
 
 // this function creates a closure that serves to avoid repeating the cheerio search expression.
 function createExtractTextFunction($, element) {
@@ -36,7 +36,7 @@ function elementToProduct($, element) {
 }
 
 // takes all html elements on the page that represent products and converts them to an object
-function getProductsOfHtml(content) {
+export default function getProductsOfHtml(content) {
   const products = [];
 
   if (!content) return products;
@@ -50,5 +50,3 @@ function getProductsOfHtml(content) {
 
   return products;
 }
-
-module.exports = getProductsOfHtml;

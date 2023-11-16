@@ -1,10 +1,8 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
 const app = express();
-const getProductsOfHtml = require("./src/utils/getProductsOfHtml");
-const getHtmlContentByQuery = require("./src/utils/getHtmlContentByQuery");
-const cors = require("cors");
-
-
+import getHtmlContentByQuery from "./utils/getHtmlContentByQuery.js";
+import getProductsOfHtml from "./utils/getProductsOfHtml.js";
 const port = process.env.PORT;
 
 app.use(cors({
