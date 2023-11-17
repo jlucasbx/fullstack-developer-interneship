@@ -1,5 +1,5 @@
 import getProductByASIN from "../api/getProductByASIN";
-import { ASIN, PRODUCT_VIEW, SEARCH, SUBMIT_BUTTON } from "../identifiers";
+import { ASIN, KEYWORD, PRODUCT_VIEW, SUBMIT_BUTTON } from "../identifiers";
 import getElement from "../utils/getElement";
 import { handleClick } from "../utils/handleClick";
 import { beforeRender } from "../utils/lifeCycle";
@@ -11,11 +11,11 @@ export default function SubmitButton() {
   beforeRender(async () => {
     
     handleClick(SUBMIT_BUTTON, async () => {
-      const { value: asinValue } = getElement(ASIN);
-      const { value: searchValue } = getElement(SEARCH);
+      const { value: asin } = getElement(ASIN);
+      const { value: keyword } = getElement(KEYWORD);
       const productView = getElement(PRODUCT_VIEW);
       productView.innerHTML = LoadingSpinner();
-      const product = await getProductByASIN(searchValue, asinValue);
+      const product = await getProductByASIN(keyword, asin);
       productView.innerHTML = product ? Product(product) : NoResult();
     });
   });
@@ -23,7 +23,7 @@ export default function SubmitButton() {
   return `
     <div class="submit-button" id="${SUBMIT_BUTTON}">
       <button>
-        Submit
+        Search
       </button>
     </div>
   `;

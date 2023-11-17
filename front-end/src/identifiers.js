@@ -9,7 +9,7 @@ const getIdentifier = (function(){
 
 export const ASIN = getIdentifier();
 
-export const SEARCH = getIdentifier();
+export const KEYWORD = getIdentifier();
 
 export const PRODUCT_VIEW = getIdentifier();
 
