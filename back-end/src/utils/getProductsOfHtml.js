@@ -1,6 +1,5 @@
-import * as cheerio from 'cheerio';
+import * as cheerio from "cheerio";
 import { htmlSearch } from "../config.js";
-
 // this function creates a closure that serves to avoid repeating the cheerio search expression.
 function createExtractTextFunction($, element) {
   return function (cssQuery, attr = "") {
@@ -8,7 +7,11 @@ function createExtractTextFunction($, element) {
       return $(element).find(cssQuery).first().text();
     }
 
-    return $(element).find(cssQuery).attr(attr);
+    if (cssQuery) {
+      return $(element).find(cssQuery).attr(attr);
+    }
+
+    return $(element).attr(attr);
   };
 }
 
@@ -28,24 +31,36 @@ function elementToProduct($, element) {
   const image = getText(htmlSearch.image, "src");
   const rating = getText(htmlSearch.rating);
   const reviews = getText(htmlSearch.reviews);
+  const asin = getText("", "data-asin");
+  const position = 0;
 
-  const product = { title, rating, reviews, image };
+  const product = {
+    position,
+    title,
+    rating,
+    reviews,
+    image,
+    asin,
+  };
   const parsedProduct = parseProduct(product);
 
   return parsedProduct;
 }
 
 // takes all html elements on the page that represent products and converts them to an object
-export default function getProductsOfHtml(content) {
-  const products = [];
+export default function getProductsOfHtml(content,onAdd) {
 
+  const products = [];
+  
   if (!content) return products;
 
   const $ = cheerio.load(content);
 
+  let cont = 1;
   $(htmlSearch.products).each((_, element) => {
     const product = elementToProduct($, element);
-    products.push(product);
+    onAdd ? onAdd(product) : products.push(product);
+    cont++;
   });
 
   return products;

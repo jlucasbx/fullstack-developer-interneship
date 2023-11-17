@@ -11,5 +11,9 @@ export const htmlSearch = {
 
 export const site = {
     url: "https://www.amazon.com/s",
-    queryParam: "k"
+    queryParamKeyword: "k",
+    queryParamPagination: "page",
+    cacheExpiration: -1
 }
+
+
