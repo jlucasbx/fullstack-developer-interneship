@@ -21,8 +21,6 @@ function getStars(rating) {
         stars.push(0);
     }
     
-    console.log(rating, stars);
-    
     return stars;
 }
 

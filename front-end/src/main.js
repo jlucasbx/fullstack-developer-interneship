@@ -1,5 +1,5 @@
-import ProductItem from "./utils/ProductItem";
-import getProducts from "./utils/getProducts";
+import ProductItem from "./components/ProductItem";
+import getProducts from "./api/getProducts";
 const productsList = document.querySelector(".products-list");
 const searchButton = document.querySelector(".search-button");
 const searchInput = document.querySelector(".search input");

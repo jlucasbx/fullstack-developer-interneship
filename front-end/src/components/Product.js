@@ -1,11 +1,9 @@
 import Rating from "./Rating";
 
 // This function returns a reusable html element like in React
-export default function ProductItem({ image, title, rating, reviews }) {
-  const li = document.createElement("li");
-
-  li.innerHTML = `
-    <div class="products-item">
+export default function Product({ image, title, rating, reviews ,position}) {
+  return `
+    <div class="product">
       <img src="${image}">
       <div>
           <h2>${title}</h2>
@@ -13,9 +11,8 @@ export default function ProductItem({ image, title, rating, reviews }) {
             ${Rating(rating)}
             <strong>${reviews}</strong>
           </div>
-      </div>
+          <div><strong>Position:</strong>${position}</div>
+          </div>
      </div>  
     `;
-
-  return li;
 }
