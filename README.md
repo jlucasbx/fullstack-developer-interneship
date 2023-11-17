@@ -19,7 +19,7 @@ Make sure you have the following prerequisites installed on your development mac
 2. Urls:  
     [front-end](http://localhost:5173)  
 
-    endpoint:
+    endpoints:
     - example 1:
         - http://localhost:3000/api/scrape?keyword=chocolate  
         get the result of 5 pages for this keyword
