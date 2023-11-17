@@ -3,12 +3,12 @@ import getProductsOfHtml from "./getProductsOfHtml.js";
 import Cache from "./Cache.js";
 import { site } from "../config.js";
 
-// Por padrão os dados expirão apos 3000ms mas caso o parametro seja '-1' o mesmo nunca ira expirara o que para
-// desenvolvimento é melhor
+// By default the data will expire after 3000ms but if the parameter is '-1' it will never expire, which stops
+// development is better
 const cache = new Cache(site.cacheExpiration);
 
-// Essa função pega o conteudo das 5 primeiras páginas para um determinada pesquisa feita e
-// retorna as mesma em uma estrutra de dados map para uma busca mais eficiente
+// This function takes the content of the first 5 pages for a given search and
+// returns them in a map data structure for a more efficient search
 async function getPagesProducts(keyword) {
   const products = new Map();
 
@@ -23,9 +23,9 @@ async function getPagesProducts(keyword) {
   return products;
 }
 
-// Essa função faz o cache do produtos toda vez que o mesmo são baixados e feito o parse do html um processo que acaba sendo
-// um pouco demorado, no entando a grande necessidade disso foi para facilitar o desenvolvimento já que a amazon bloqueia o acesso
-// após algumas requisições sucessivas
+// This function caches the products every time they are downloaded and parses the html, a process that ends up being
+// a little time consuming, however the great need for this was to facilitate development since Amazon blocks access
+// after a few successive requests
 async function getProductsAsMap(keyword) {
   const cachedProducts = cache.get(keyword);
 
@@ -38,7 +38,7 @@ async function getProductsAsMap(keyword) {
   return products;
 }
 
-// Retorna o produto em formato de array
+// Returns products in array format
 export async function getProducts(keyword) {
   const mapProducts = await getProductsAsMap(keyword);
   const products = Array.from(mapProducts).map(([_, value]) => (value)).flat(Infinity);
@@ -46,7 +46,7 @@ export async function getProducts(keyword) {
   return products;
 }
 
-// faz uma busca no produtos pelo asin
+// search for products by asin, using the map that searches quickly
 export async function getProductByASIN(keyword, asin) {
   const products = await getProductsAsMap(keyword);
   const product = products.get(asin);

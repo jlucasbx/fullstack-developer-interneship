@@ -1,5 +1,3 @@
-// para evitar vazamentos de mémoria fasso o controle de quantos elementos podem ficar armazendos no cache
-// e também atualização dos dados após um certo periodo de tempo
 
 function createTimestamp(expiration) {
   if (expiration === -1) return null;
@@ -8,6 +6,9 @@ function createTimestamp(expiration) {
 
   return futureDate;
 }
+
+// to avoid memory leaks I control how many elements can be stored in the cache
+// and also update the data after a certain period of time
 
 export default class Cache extends Map {
   constructor(expiration = 1000, cacheSize = 10) {
