@@ -59,6 +59,7 @@ export default function getProductsOfHtml(content,onAdd) {
   let cont = 1;
   $(htmlSearch.products).each((_, element) => {
     const product = elementToProduct($, element);
+    product.position = cont;
     onAdd ? onAdd(product) : products.push(product);
     cont++;
   });

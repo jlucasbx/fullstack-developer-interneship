@@ -15,7 +15,6 @@ async function getPagesProducts(keyword) {
   for (let page = 1; page <= 5; page++) {
     const htmlContent = await getHtmlContentByQuery(keyword, page);
     getProductsOfHtml(htmlContent, (product) => {
-      product.position = products.size + 1;
       products.set(product.asin, product);
     });
   }
