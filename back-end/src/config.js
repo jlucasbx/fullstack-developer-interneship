@@ -10,7 +10,7 @@ export const htmlSearch = {
 }
 
 export const site = {
-    url: "https://www.amazon.com/s",
+    url: "https://www.amazon.com.br/s",
     queryParamKeyword: "k",
     queryParamPagination: "page",
     cacheExpiration: -1

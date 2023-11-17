@@ -15,7 +15,7 @@ async function getPagesProducts(keyword) {
   for (let page = 1; page <= 5; page++) {
     const htmlContent = await getHtmlContentByQuery(keyword, page);
     getProductsOfHtml(htmlContent, (product) => {
-      product.position = products.size;
+      product.position = products.size + 1;
       products.set(product.asin, product);
     });
   }
@@ -41,7 +41,7 @@ async function getProductsAsMap(keyword) {
 // Retorna o produto em formato de array
 export async function getProducts(keyword) {
   const mapProducts = await getProductsAsMap(keyword);
-  const products = Array.from(mapProducts);
+  const products = Array.from(mapProducts).map(([_, value]) => (value)).flat(Infinity);
 
   return products;
 }
