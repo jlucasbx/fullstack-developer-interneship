@@ -1,11 +1,11 @@
-
-const getIdentifier = (function(){
-    let cont = 0;
-    return function(){
-        return cont++;
-    }
+const getIdentifier = (function () {
+  let cont = 0;
+  return function () {
+    return cont++;
+  };
 })();
 
+//enum style object used to create unique id's
 
 export const ASIN = getIdentifier();
 

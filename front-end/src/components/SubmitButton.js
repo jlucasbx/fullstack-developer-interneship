@@ -7,6 +7,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import NoResult from "./NoResult";
 import Product from "./Product";
 
+// This function returns a reusable html element like in React
 export default function SubmitButton() {
   beforeRender(async () => {
     
