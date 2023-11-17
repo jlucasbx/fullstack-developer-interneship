@@ -18,4 +18,15 @@ Make sure you have the following prerequisites installed on your development mac
     docker-compose up
 2. Urls:  
     [front-end](http://localhost:5173)  
-    [back-end](http://localhost:3000/api/scrape?keyword=chocolate)
+
+    endpoint:
+    - example 1:
+        - http://localhost:3000/api/scrape?keyword=chocolate  
+        get the result of 5 pages for this keyword
+    
+    - example 2:
+        - http://localhost:3000/api/scrape?keyword=chocolate&asin=B08566Y4Q9  
+        finds a product with matches this asin in result of 5 pages for the keyword
+
+    
+    
