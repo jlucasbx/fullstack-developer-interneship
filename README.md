@@ -25,7 +25,7 @@ Make sure you have the following prerequisites installed on your development mac
         get the result of 5 pages for this keyword
     
     - example 2:
-        - http://localhost:3000/api/scrape?keyword=chocolate&asin=B08566Y4Q9  
+        - http://localhost:3000/api/scrape?keyword=chocolate&asin=B07NR8RP9V  
         finds a product with matches this asin in result of 5 pages for the keyword
 
     
