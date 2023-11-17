@@ -17,11 +17,12 @@ app.get("/api/scrape", async (req, res) => {
   const { keyword, asin } = req.query;
   if (keyword && asin) {
     const product = await getProductByASIN(keyword, asin);
-    // if (!product) product = { error: "product no found" };
-    res.send([product]);
-  }else{
+    res.send(product ? [product] : []);
+  }else if(keyword){
     const products = await getProducts(keyword);
     res.send(products);
+  }else{
+    res.send([]);
   }
 
 });
