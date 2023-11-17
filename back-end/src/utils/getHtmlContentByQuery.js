@@ -8,7 +8,6 @@ export default async function getHtmlContentByQuery(search, page) {
   try {
     const url =  `${site.url}?${site.queryParamKeyword}=${search}&${site.queryParamPagination}=${page}`;
     const { data } = await axios.get(url);
-    console.log(url,"fetched")
     return data;
   } catch{
     return null;
